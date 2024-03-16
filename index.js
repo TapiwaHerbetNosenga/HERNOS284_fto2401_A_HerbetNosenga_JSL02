@@ -21,6 +21,14 @@ document.querySelector('#submitWorkout').addEventListener('click', displayWorkou
 const addNewGoal = () => {
     const goalInput = document.querySelector('#goalInput').value;
     const goalList = document.querySelector('#goalList');
+
+    let listOfGoals = goalList.querySelectorAll("li");
+         for(let i = 0; i<listOfGoals.length; i++){
+             if(listOfGoals[i].textContent == goalInput){
+                 alert(`You can not repeat goals!`);
+                 return;
+             }
+         }
     
     // ⚠️ Hint 1: Check for duplicates
     // Use 'goalList' to get all existing goals and check if 'goalInput' matches any of them.
@@ -35,10 +43,15 @@ const addNewGoal = () => {
     // ⚠️ Hint 4: Event listener
     // The event listener that removes goals when clicked is not related to this issue.
     // Focus on preventing duplicates for now.
+
+ 
+
     
     const newGoal = document.createElement('li');
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
+
+  
 };
 
 // Add event listener to the goal submit button
